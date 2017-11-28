@@ -5,22 +5,16 @@
  */
 package com.doubotis.mappicturegenerator;
 
-import java.awt.BasicStroke;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Stroke;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
 import com.doubotis.mappicturegenerator.geo.LocationBounds;
 import com.doubotis.mappicturegenerator.geo.Location;
-import com.doubotis.mappicturegenerator.geo.LocationPath;
 import com.doubotis.mappicturegenerator.geo.MercatorProjection;
-import com.doubotis.mappicturegenerator.geo.MercatorUtils;
 import com.doubotis.mappicturegenerator.geo.PointF;
-import com.doubotis.mappicturegenerator.geo.Tile;
-import com.doubotis.mappicturegenerator.layers.LocationPathLayer;
 import com.doubotis.mappicturegenerator.layers.Layer;
 import com.doubotis.mappicturegenerator.maps.TMSMapType;
 import java.awt.RenderingHints;
