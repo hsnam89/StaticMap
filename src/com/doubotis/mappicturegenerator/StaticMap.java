@@ -11,12 +11,14 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
+
 import com.doubotis.mappicturegenerator.geo.LocationBounds;
-import com.doubotis.mappicturegenerator.geo.Location;
 import com.doubotis.mappicturegenerator.geo.MercatorProjection;
 import com.doubotis.mappicturegenerator.geo.PointF;
 import com.doubotis.mappicturegenerator.layers.Layer;
 import com.doubotis.mappicturegenerator.maps.TMSMapType;
+import com.doubotis.mappicturegenerator.geo.Location;
+
 import java.awt.RenderingHints;
 import java.io.IOException;
 import java.io.OutputStream;

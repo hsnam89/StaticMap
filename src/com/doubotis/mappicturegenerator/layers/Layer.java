@@ -6,6 +6,7 @@
 package com.doubotis.mappicturegenerator.layers;
 
 import com.doubotis.mappicturegenerator.StaticMap;
+
 import java.awt.Graphics2D;
 
 /**

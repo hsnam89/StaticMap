@@ -3,14 +3,11 @@ package com.doubotis.mappicturegenerator.layers;
 import com.doubotis.mappicturegenerator.StaticMap;
 import com.doubotis.mappicturegenerator.geo.MercatorProjection;
 import com.doubotis.mappicturegenerator.geo.PointF;
-import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKTReader;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;

@@ -4,19 +4,10 @@ import com.doubotis.mappicturegenerator.StaticMap;
 import com.doubotis.mappicturegenerator.geo.MercatorProjection;
 import com.doubotis.mappicturegenerator.geo.PointF;
 import com.doubotis.mappicturegenerator.geo.Transform;
-import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKTReader;
-import org.osgeo.proj4j.CRSFactory;
-import org.osgeo.proj4j.CoordinateReferenceSystem;
-import org.osgeo.proj4j.CoordinateTransform;
-import org.osgeo.proj4j.CoordinateTransformFactory;
-import org.osgeo.proj4j.*;
-import org.osgeo.proj4j.parser.Proj4Parser;
 
 
 import java.awt.*;
@@ -48,6 +39,10 @@ public class PointLayer implements Layer{
                 String RADIUS = this.PointsWKT.get(i).get("RADIUS").toString();
                 String num = this.PointsWKT.get(i).get("NUM").toString();
 
+                if(Double.parseDouble(RADIUS)<9656.06) {
+                    RADIUS = "9656.06"; //6마일 이상부터 보이도록 Fixed
+                }
+
                 WKTReader reader =new WKTReader();
                 Point point = null;
                 com.vividsolutions.jts.geom.Polygon polygon = null;
@@ -56,6 +51,7 @@ public class PointLayer implements Layer{
                 if(!WKT.equals("")&& !RADIUS.equals("")){//Point 와 Radius를 가지고 있는경우(Polygone)
                     point = (Point)reader.read(WKT);
                     Point transformPoint =transform.PointTransForm("EPSG:4326","EPSG:3857",point);
+
                     Polygon bufferPolygon = (Polygon) transformPoint.buffer(Double.parseDouble(RADIUS));
                     polygon = transform.PolygonTransForm("EPSG:3857", "EPSG:4326", bufferPolygon);
 
@@ -63,7 +59,7 @@ public class PointLayer implements Layer{
                     point = (Point)reader.read(WKT);
                     point = (Point)reader.read(WKT);
                     Point transformPoint =transform.PointTransForm("EPSG:4326","EPSG:3857",point);
-                    Polygon bufferPolygon = (Polygon) transformPoint.buffer(Double.parseDouble("2"));
+                    Polygon bufferPolygon = (Polygon) transformPoint.buffer(Double.parseDouble(RADIUS));
                     polygon = transform.PolygonTransForm("EPSG:3857", "EPSG:4326", bufferPolygon);
 
                 }//end of if

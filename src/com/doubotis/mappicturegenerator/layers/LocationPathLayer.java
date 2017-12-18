@@ -5,12 +5,12 @@
  */
 package com.doubotis.mappicturegenerator.layers;
 
+import com.doubotis.mappicturegenerator.geo.PointF;
 import com.doubotis.mappicturegenerator.StaticMap;
 import com.doubotis.mappicturegenerator.geo.Location;
 import com.doubotis.mappicturegenerator.geo.LocationBounds;
 import com.doubotis.mappicturegenerator.geo.LocationPath;
 import com.doubotis.mappicturegenerator.geo.MercatorProjection;
-import com.doubotis.mappicturegenerator.geo.PointF;
 import com.doubotis.mappicturegenerator.geo.Trace;
 import com.vividsolutions.jts.geom.Point;
 import java.awt.BasicStroke;

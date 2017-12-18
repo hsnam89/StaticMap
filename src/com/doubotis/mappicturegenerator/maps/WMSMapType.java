@@ -5,13 +5,13 @@
  */
 package com.doubotis.mappicturegenerator.maps;
 
+import com.doubotis.mappicturegenerator.geo.PointF;
 import com.doubotis.mappicturegenerator.StaticMap;
 import com.doubotis.mappicturegenerator.geo.Location;
 import com.doubotis.mappicturegenerator.geo.LocationBounds;
 import com.doubotis.mappicturegenerator.geo.MercatorProjection;
-import com.doubotis.mappicturegenerator.geo.PointF;
+
 import java.awt.Graphics2D;
-import java.awt.Image;
 
 /**
  *
