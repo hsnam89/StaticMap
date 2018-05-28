@@ -17,20 +17,19 @@ public class Main {
 
     public static void main(String args[]) throws ParseException {
         //https://github.com/hsnam89/StaticMap 참조
-        String outPath = "D:/test/export_2017_11.png";
+
+
+        String outPath = "D:/test/export_2017_11.png"; // 이미지 저장 주소
         StaticMap mp = new StaticMap(1600, 1200);
         //TMSMapType baseMap = new TMSMapType("http://{s}.tile.osm.org/{z}/{x}/{y}.png"); // OSM
-        TMSMapType baseMap = new TMSMapType("http://ngw.sgone.co.kr:9000/basemap.do?z={z}&y={y}&x={x}"); //VWORLD
-        /*TMSMapType baseMap = new TMSMapType("http://ngw.sgone.co.kr:9000/basemap.do?z={z}&y={y}&x={x}"); //자체 타일링*/
+        TMSMapType baseMap = new TMSMapType("http://ngw.sgone.co.kr:9000/basemap.do?z={z}&y={y}&x={x}"); //자체 VWORLD
 
-
-
-        //Point
+        //Point -- 그려줄 포인트 데이터 입력
         List list =new ArrayList();
         HashMap<String,Object> PointWKT =new HashMap<>();
-        PointWKT.put("WKT", "POINT(130.0 35.833333333333336)");
-        PointWKT.put("RADIUS", "4828.0199999999995");
-        PointWKT.put("NUM", "1");
+        PointWKT.put("WKT", "POINT(130.0 35.833333333333336)"); // Point WKT
+        PointWKT.put("RADIUS", "4828.0199999999995"); // Radius
+        PointWKT.put("NUM", "1"); // 순번
         HashMap<String,Object> PointWKT2 =new HashMap<>();
         PointWKT2.put("WKT", "POINT(129.73333333333332 35.375)");
         PointWKT2.put("RADIUS", "4828.0199999999995");
@@ -45,10 +44,10 @@ public class Main {
         final PointLayer pwkt = new PointLayer();
         pwkt.getPointLayers(list);
         //
-        //Polygon
+        //Polygon -- 그려줄 폴리곤 데이터 입력
         HashMap<String,Object> PolygonWKT4 =new HashMap<>();
-        PolygonWKT4.put("WKT","POLYGON((130.26944444444445 35.76555555555556,130.26944444444445 35.5175,129.96305555555554 35.5175,129.96305555555554 35.76555555555556,130.26944444444445 35.76555555555556))");
-        PolygonWKT4.put("NUM","4");
+        PolygonWKT4.put("WKT","POLYGON((130.26944444444445 35.76555555555556,130.26944444444445 35.5175,129.96305555555554 35.5175,129.96305555555554 35.76555555555556,130.26944444444445 35.76555555555556))"); //Polygon WKT
+        PolygonWKT4.put("NUM","4"); // 순번
         HashMap<String,Object> PolygonWKT5 =new HashMap<>();
         PolygonWKT5.put("WKT","POLYGON((128.3452777777778 38.546388888888885,128.43166666666664 38.60111111111111,128.57777777777778 38.4775,128.49749999999997 38.42222222222222,128.3452777777778 38.546388888888885))");
         PolygonWKT5.put("NUM","5");
@@ -66,15 +65,13 @@ public class Main {
         pon.getPolygonWKT(listPolygon);
         NumberingLayer number =new NumberingLayer(list, listPolygon);
         LegendTable legend =new LegendTable();
-        //
-        //
-        mp.addLayer(baseMap);
-        mp.addLayer(pon); // polygon
-        mp.addLayer(pwkt); //point
-        mp.addLayer(legend); //범례표
-        mp.addLayer(number); //numbering
-        mp.setLocation(36.448, 128.156);
-        mp.setZoom(7);
+
+        mp.addLayer(pon); // add polygon Layer
+        mp.addLayer(pwkt); //add point Layer
+        mp.addLayer(legend); //범례표 Layer
+        mp.addLayer(number); //numbering Layer
+        mp.setLocation(36.448, 128.56); //지도의 센터점
+        mp.setZoom(1); //줌 스케일
 
         try{
             mp.drawInto(new File(outPath));
